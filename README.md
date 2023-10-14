@@ -1,4 +1,4 @@
-# prime_video
+# Netflix Clone 
 
 A new Flutter project.
 
