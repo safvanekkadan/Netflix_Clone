@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:prime_video/view/fastlaughs/widget/video_list_item.dart';
 
 class FastLaughsScreen extends StatelessWidget {
-  const FastLaughsScreen({super.key});
+
+  const FastLaughsScreen({super.key,
+  
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("fastlaughs"),
+      body: SafeArea(
+        child:PageView(
+         scrollDirection: Axis.vertical, 
+        children:List.generate(10, (index) {
+          return VideoListItem(index: index);
+        }) ,
+      ) ),
     );
   }
 }
