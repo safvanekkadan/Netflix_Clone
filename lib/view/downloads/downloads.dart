@@ -8,7 +8,7 @@ class DownloadScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final  Size size = MediaQuery.of(context).size;
+    // final  Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize:Size.fromHeight(50),

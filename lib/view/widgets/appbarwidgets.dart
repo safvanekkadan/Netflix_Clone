@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prime_video/view/constants/constants.dart';
 
 class APPBarWidget extends StatelessWidget {
   const APPBarWidget({
@@ -17,12 +18,13 @@ class APPBarWidget extends StatelessWidget {
         const Icon(Icons.cast,
         color: Colors.white,
         size: 30,),
-        const SizedBox(width: 10),
+        kWidth,
         Container(
           height: 30,
           width: 40,
           color: Colors.blue,
         ),
+        kWidth
       ],
     );
   }
