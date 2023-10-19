@@ -10,7 +10,7 @@ class SearchTextTItle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Text(title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 22,
         fontWeight: FontWeight.bold),
         );

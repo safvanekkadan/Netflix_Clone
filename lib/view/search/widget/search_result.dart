@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:prime_video/controller/searchresult_provider.dart';
+import 'package:prime_video/model/movie_info_model.dart';
+import 'package:prime_video/service/api_key.dart';
 import 'package:prime_video/view/search/widget/title.dart';
- const imageURl =    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg";
+import 'package:provider/provider.dart';
+ //const imageURl =    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg";
 
 class SearchResultWidget extends StatelessWidget {
-  const SearchResultWidget({super.key});
+
+  final String apiQuery;
+  const SearchResultWidget({super.key,
+  required this.apiQuery});
 
   @override
   Widget build(BuildContext context) {
@@ -12,29 +19,46 @@ class SearchResultWidget extends StatelessWidget {
       children: [
         const SearchTextTItle(title: "Movies & TV"),
         const SizedBox(height: 10,),
-        Expanded(child: GridView.count(
-          crossAxisCount: 3,
-          mainAxisSpacing: 8,
-          crossAxisSpacing:8,
-          childAspectRatio: 1/1.5,
-          shrinkWrap: true,
-          children: List.generate(20, (index) {
-            return  const MainCard();
-          },
-          ),
-          ))
+        Expanded(child: Consumer<SearchResultProvider>(
+          builder: (context, valueprovider, child) {
+        Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(apiQuery);
+          return GridView.count(
+            crossAxisCount: 3,
+            mainAxisSpacing: 8,
+            crossAxisSpacing:8,
+            childAspectRatio: 1/1.5,
+            shrinkWrap: true,
+            children: List.generate(
+              valueprovider.searchResultMovies.length, (index) {
+                MovieInfoModel movieInfo = valueprovider.searchResultMovies[index];
+                if(movieInfo.posterpath !=null){
+                  String imageUrl ="https://image.tmdb.org/t/p/w500${movieInfo.posterpath}?api_key=$apikey";
+                  return   MainCard(
+                    imageUrl: imageUrl,
+                  );
+                }
+                return const SizedBox();
+              
+            },
+            ),
+            );
+          }
+        ))
       ],
     );
   }
 }
 class MainCard extends StatelessWidget {
-  const MainCard({super.key});
+
+  final String imageUrl;
+  const MainCard({super.key,
+  required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration:BoxDecoration(
-        image: const DecorationImage(image: NetworkImage(imageURl),
+        image:  DecorationImage(image: NetworkImage(imageUrl),
         fit: BoxFit.contain),
         borderRadius: BorderRadius.circular(5)
       ),

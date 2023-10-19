@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:prime_video/controller/download_trendiinginitial.dart';
 import 'package:prime_video/view/widgets/appbarwidgets.dart';
+import 'package:provider/provider.dart';
 
 class DownloadScreen extends StatelessWidget {
   DownloadScreen({Key?key}):super(key: key);
@@ -32,20 +34,20 @@ class DownloadScreen extends StatelessWidget {
   }
 }
 class Section2 extends StatelessWidget {
+
+  
    Section2({super.key});
-  final List imagelist =[
-     "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/8qBylBsQf4llkGrWR3qAsOtOU8O.jpg",
-    "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/8qBylBsQf4llkGrWR3qAsOtOU8O.jpg",
-    "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/8qBylBsQf4llkGrWR3qAsOtOU8O.jpg"
-  ];
+  
   @override
   Widget build(BuildContext context) {
+    //final TrendingMovieProvider =Provider.of<TrandingMovieInitializeProvider>(context);
+   
     final  Size size = MediaQuery.of(context).size;
     return Column(
       children: [
-         Padding(
-           padding: const EdgeInsets.symmetric(vertical:20),
-           child: const Text("Introducing Downloads for you",
+         const Padding(
+           padding: EdgeInsets.symmetric(vertical:20),
+           child: Text("Introducing Downloads for you",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -60,34 +62,52 @@ class Section2 extends StatelessWidget {
             width:size.width,
             height: size.height *0.6,
             //color: Colors.amber,
-            child:Stack(
-              alignment: Alignment.center,
-              children: [
-                Center(
-                  child: CircleAvatar(
-                    backgroundColor: Colors.grey,
-                  radius:size.width * 0.40
-                ),
-                ),
-                Downloadimagewidget(
-                  imagelist: imagelist[0], 
-                  margin:const EdgeInsets.only(left: 130,bottom: 50),
-                  angle: 20,
-                  size: Size(size.width *0.4,size.height*0.30),
+            child:Consumer<TrandingMovieInitializeProvider>(
+              builder: (context, value, child) {
+                if (value.isLoading){
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }else if(value.imagelist.isEmpty){
+                  return const Text("no data Available");
+
+                }else{
+              
+              return Stack(
+                alignment: Alignment.center,
+                 
+                children: value.imagelist.length<3
+                ?[]
+                :
+                [
+                  Center(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey,
+                    radius:size.width * 0.40
+                  ),
                   ),
                   Downloadimagewidget(
-                  imagelist: imagelist[1], 
-                  margin:const EdgeInsets.only(right: 130,bottom: 50),
-                  angle: -20,
-                  size: Size(size.width *0.4,size.height*0.30)
-                  ),
-                  Downloadimagewidget(
-                  imagelist: imagelist[2], 
-                  margin:const EdgeInsets.only(bottom:10),
-                  size: Size(size.width *0.45,size.height*0.34)
-                  ),
-              ],
-            ) ,
+                    imagelist: value.imagelist[0], 
+                    margin:const EdgeInsets.only(left: 130,bottom: 50),
+                    angle: 20,
+                    size: Size(size.width *0.4,size.height*0.30),
+                    ),
+                    Downloadimagewidget(
+                    imagelist: value.imagelist[1], 
+                    margin:const EdgeInsets.only(right: 130,bottom: 50),
+                    angle: -20,
+                    size: Size(size.width *0.4,size.height*0.30)
+                    ),
+                    Downloadimagewidget(
+                    imagelist: value.imagelist[2], 
+                    margin:const EdgeInsets.only(bottom:10),
+                    size: Size(size.width *0.45,size.height*0.34)
+                    ),
+                ],
+              );
+                }
+              }
+            ),
           ),
 
       ],

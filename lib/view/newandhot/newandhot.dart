@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/constants.dart';
+import 'widgets/comingsoon.dart';
+import 'widgets/everyone_watching.dart';
 
 class NewAndHotScreen extends StatelessWidget {
   const NewAndHotScreen({super.key});
@@ -10,9 +12,9 @@ class NewAndHotScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar:PreferredSize(
-          preferredSize:Size.fromHeight(80) , 
+          preferredSize:const Size.fromHeight(80) , 
           child: AppBar(
-            title: Text("New & Hot",
+            title: const Text("New & Hot",
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold
@@ -34,12 +36,12 @@ class NewAndHotScreen extends StatelessWidget {
             isScrollable: true,
             unselectedLabelColor: Colors.white,
             labelColor: Colors.black,
-            labelStyle: TextStyle(fontSize:16,fontWeight: FontWeight.bold),
+            labelStyle: const TextStyle(fontSize:16,fontWeight: FontWeight.bold),
               indicator: BoxDecoration(
                 color:Colors.white,
                 borderRadius: BorderRadius.circular(30)
               ),      
-          tabs: [
+          tabs: const [
             Tab(
               text:"🍿Coming Soon"),
               Tab(
@@ -51,7 +53,7 @@ class NewAndHotScreen extends StatelessWidget {
          
         body:
          TabBarView(children: [
-          _buildComingsoon(context),
+          _buildComingsoon(),
           _buildEveryonewatcing()
         ])
       ),
@@ -60,32 +62,27 @@ class NewAndHotScreen extends StatelessWidget {
 
 }
 
-_buildComingsoon(BuildContext context) {
-  Size size =MediaQuery.of(context).size;
-     return ListView(
-      
-      children: [
-        kHieght,
-        Row(
-          
-          children: [
-            SizedBox(
-              width: 50,
-            ),
-            Container(
-              height: 500,
-              width:size.width-50,
-              color: Colors.amber,
-            ),
-          ],
-        )
-      ],
-     );
+_buildComingsoon() {
+  
+     return ListView.builder(
+      itemBuilder:(context, index) =>
+        ComingsoonWidget(
+        
+        ),
+
+     itemCount: 10,
+      );
 
 }
+
+
 _buildEveryonewatcing() {
-  return SizedBox();
+  return ListView.builder(
+    itemBuilder: (context, index) => const EveryonewatchingWidget(),
+    itemCount: 10,
+    );
 }
+
 
 
 

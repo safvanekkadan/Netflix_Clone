@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:prime_video/controller/searchquery_provider.dart';
 import 'package:prime_video/view/search/widget/search_idle.dart';
 import 'package:prime_video/view/search/widget/search_result.dart';
+import 'package:provider/provider.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final SearchQueryModel =Provider.of<SearchQueryProvider>(context);
     return Scaffold(
          body: SafeArea(
           child: Padding(
@@ -16,12 +19,15 @@ class SearchScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
             CupertinoSearchTextField(
+              onChanged: (value) {
+                SearchQueryModel.updateQuery(value);
+              },
               backgroundColor:Colors.grey.withOpacity(0.4) ,
-              prefixIcon: Icon(CupertinoIcons.search,
+              prefixIcon: const Icon(CupertinoIcons.search,
               color: Colors.grey,),
-              suffixIcon: Icon(CupertinoIcons.xmark_circle_fill,
+              suffixIcon: const Icon(CupertinoIcons.xmark_circle_fill,
               color: Colors.grey,),
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white
               ),
             ),
@@ -29,10 +35,12 @@ class SearchScreen extends StatelessWidget {
               height: 10,
             ),
             
-            Expanded(child: const SearchResultWidget()),
+            Expanded(child: SearchQueryModel.query.isEmpty?
+              const SearchIdle():SearchResultWidget(apiQuery: SearchQueryModel.query)),
                  ],
                ),
-         )),
+         ),
+         ),
     );
   }
 }
