@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prime_video/controller/bottombar_provider.dart';
+import 'package:provider/provider.dart';
 
 
 ValueNotifier<int> indexChangeNotifier = ValueNotifier(0);
@@ -8,13 +10,14 @@ class BottomNavigationWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: indexChangeNotifier,
-      builder: (context, int newIndex, _) {
+    return Consumer<SelectedIndexProvider>(
+      
+      
+      builder:(context, value, child) {
         return BottomNavigationBar(
-            currentIndex: newIndex,
+            currentIndex: value.selectedIndex,
             onTap: (index) {
-              indexChangeNotifier.value = index;
+        value.setIndex(index);      
             },
             elevation: 0,
             type: BottomNavigationBarType.fixed,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prime_video/controller/bottombar_provider.dart';
+import 'package:provider/provider.dart';
 import '../downloads/downloads.dart';
 import '../fastlaughs/fast_laughs.dart';
 import '../home/home_screen.dart';
@@ -9,7 +11,7 @@ import 'widgets/bottom_nav.dart';
 class MainScreen extends StatelessWidget {
   MainScreen({super.key});
 
-  final _pages = [
+  final pages = [
     const HomeScreen(),
     const NewAndHotScreen(),
       FastLaughsScreen( ),
@@ -21,10 +23,11 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ValueListenableBuilder(
-          valueListenable: indexChangeNotifier,
-          builder: (context, int index, _) {
-            return _pages[index];
+        child: Consumer<SelectedIndexProvider>(
+          builder: (context, value,child) {
+            return value.selectedIndex < pages.length
+                ? pages[value.selectedIndex]
+                : const Center(child: Text("Not Found"));
           },
         ),
       ),

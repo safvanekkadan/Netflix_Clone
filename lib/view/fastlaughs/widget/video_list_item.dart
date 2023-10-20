@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prime_video/controller/download_trendiinginitial.dart';
+import 'package:prime_video/view/fastlaughs/widget/fast_laugth_video.dart';
 import 'package:provider/provider.dart';
 
 
@@ -23,11 +24,20 @@ class VideoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final videoUrl=dummyVideoUrls[index % dummyVideoUrls.length];
     return Consumer<TrandingMovieInitializeProvider>(
       builder: (context, value, child) {
-        
+        if(value.isLoading){
+          return const Center(
+            child:CircularProgressIndicator(),
+          );
+        }
       return Stack(
         children: [
+          FastlaughVideoPlayer(
+            VideoUrl: videoUrl,
+          
+          ),
           Container(
             color: Colors.accents[index % Colors.accents.length],
           ),
@@ -47,24 +57,26 @@ class VideoListItem extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical:20,horizontal: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children:const  [
+                children:  [
                   Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: CircleAvatar(
                       radius: 30,
                       backgroundImage: 
-                      NetworkImage("https://www.themoviedb.org/t/p/w300_and_h450_bestv2/8qBylBsQf4llkGrWR3qAsOtOU8O.jpg"),
+                      NetworkImage(
+                        value.imagelist[index],
+                      ),
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  VideoActionWidget(icon: Icons.emoji_emotions_outlined, title:"LOL"),
-                  SizedBox(height: 20,),
-                  VideoActionWidget(icon: Icons.add, title:"My List"),
-                  SizedBox(height: 20,),
-                  VideoActionWidget(icon: Icons.share, title:"Share"),
-                  SizedBox(height: 20),
-                  VideoActionWidget(icon: Icons.play_arrow, title:"Play"),
-                  SizedBox(height: 10)
+                  const SizedBox(height: 20,),
+                  const VideoActionWidget(icon: Icons.emoji_emotions_outlined, title:"LOL"),
+                  const SizedBox(height: 20,),
+                  const VideoActionWidget(icon: Icons.add, title:"My List"),
+                  const SizedBox(height: 20,),
+                  const VideoActionWidget(icon: Icons.share, title:"Share"),
+                  const SizedBox(height: 20),
+                  const VideoActionWidget(icon: Icons.play_arrow, title:"Play"),
+                  const SizedBox(height: 10)
                 ],
               ),
             )

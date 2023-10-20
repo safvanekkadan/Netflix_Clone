@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prime_video/model/movie_info_model.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/constants.dart';
@@ -8,28 +9,32 @@ import '../../widgets/video_widget.dart';
 
 
 class EveryonewatchingWidget extends StatelessWidget {
+  final MovieInfoModel movieInfo;
   const EveryonewatchingWidget({
     super.key,
+    required this.movieInfo
   });
 
   @override
   Widget build(BuildContext context) {
-    return  const Column(
+    return   Column(
     crossAxisAlignment: CrossAxisAlignment.start,  
       children: [
         kHieght,
-         Text("Friends",
+         Text(movieInfo.originalTitle??"No Title",
                    style:TextStyle(
                   color: kwhitecolor,fontSize: 18,
                   fontWeight: FontWeight.bold) ,),
-                  Text("This hit sitcorn follows the merry misadventures of six 20-something pals as they navigate the pitfalls of work,life and love and in 1990s Manhattan.",
+                  Text(movieInfo.overview!,
 
                   style: TextStyle(
                   color: kgreycolor,fontSize: 15
                   ),
                   ),
                  kHieght50,
-                  videoWidget(),
+                  videoWidget(
+                    
+                  ),
                   
                   kHieght,
                   Row(

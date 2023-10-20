@@ -3,8 +3,8 @@ class MovieInfoModel{
    String? title;
    String?releaseDate;
    String?originalTitle;
-   String?overview="";
-   String?video;
+   String?overview= "";
+   bool?video;
 
 
 

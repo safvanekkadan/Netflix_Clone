@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:prime_video/controller/newandhot_provider.dart';
+import 'package:provider/provider.dart';
 import '../constants/constants.dart';
 import 'widgets/comingsoon.dart';
 import 'widgets/everyone_watching.dart';
@@ -64,23 +66,44 @@ class NewAndHotScreen extends StatelessWidget {
 
 _buildComingsoon() {
   
-     return ListView.builder(
-      itemBuilder:(context, index) =>
-        ComingsoonWidget(
+     return Consumer<NewandHotProvider>(
+       builder: (context, comingsoon, child) {
+         return ListView.builder(
         
-        ),
-
-     itemCount: 10,
-      );
+        itemBuilder:(context, index) =>
+          ComingsoonWidget(
+        
+            movieInfo: comingsoon.upcomingMovies[index],
+        
+          
+          ),
+     
+       itemCount:comingsoon.upcomingMovies.length,
+        );
+       },
+     );
 
 }
 
 
 _buildEveryonewatcing() {
-  return ListView.builder(
-    itemBuilder: (context, index) => const EveryonewatchingWidget(),
-    itemCount: 10,
-    );
+  return Consumer<NewandHotProvider>(
+
+    builder: (context, value, child) {
+    //  if (value.isLoading) {
+    //       return const Center(child: CircularProgressIndicator(),);
+    //     }else if(value.moviepopular.isEmpty){
+    //       return const Text("No data available");
+    //     }
+    return ListView.builder(
+      shrinkWrap: true,
+      itemBuilder: (context, index) =>  EveryonewatchingWidget(
+        movieInfo:value.upcomingMovies[index] ,
+      ),
+      itemCount: value.moviepopular.length,
+      );
+    }
+  );
 }
 
 

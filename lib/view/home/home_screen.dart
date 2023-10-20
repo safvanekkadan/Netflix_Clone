@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:prime_video/service/apiendpoint.dart';
 import 'package:prime_video/view/constants/constants.dart';
 import 'package:prime_video/view/home/bakcground_card.dart';
 import '../widgets/main_card_title.dart';
@@ -31,14 +32,19 @@ class HomeScreen extends StatelessWidget {
               children:  [
                 BAckgroundCard(),
                 
-                const MainCardTitle(title: "Release in the past year"),
+                 MainCardTitle(title: "Release in the past year",
+                 apiurl: ApiendPoint.moviepopular),
                 kHieght,
-                const MainCardTitle(title: "Trending Now",),
+                const MainCardTitle(title: "Trending Now",
+                apiurl: ApiendPoint.trendingMovies),
                 kHieght,
                  const NUmberTitleCard(),
-                const MainCardTitle(title: "Tanse Dramas",),
+                const MainCardTitle(title: "Popular Shows",
+                apiurl:ApiendPoint.tvpopular ,
+                ),
                 kHieght,
-                const MainCardTitle(title: "Sounth Indians Cinemas",)
+                const MainCardTitle(title: "Upcoming",
+                apiurl: ApiendPoint.upcoming,)
               ],
             ),
            ScrollNotifier.value==true ? 

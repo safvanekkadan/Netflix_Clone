@@ -7,10 +7,11 @@ import '../../constants/constants.dart';
 
 class NumberCard extends StatelessWidget {
   const NumberCard({super.key,
-  required this.index
+  required this.index,
+  required this.imageUrl
   });
   final int index;
-
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -24,9 +25,9 @@ class NumberCard extends StatelessWidget {
               width: 150,
              decoration: BoxDecoration(
               borderRadius: kRadius10,
-              image:const DecorationImage(
+              image: DecorationImage(
                  fit: BoxFit.cover,
-                image: NetworkImage("https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bAZFkReuav0fyCVmWXBeUB93nAe.jpg"),
+                image: NetworkImage(imageUrl),
                 ), 
              ),
             ),

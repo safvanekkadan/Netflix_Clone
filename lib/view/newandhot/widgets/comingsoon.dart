@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:prime_video/model/movie_info_model.dart';
 
 import '../../constants/colors.dart';
@@ -9,12 +8,12 @@ import '../../home/custom_bottom.dart';
 import '../../widgets/video_widget.dart';
 
 class ComingsoonWidget extends StatelessWidget {
-
-  final MovieInfoModel movieInfo;
+final MovieInfoModel movieInfo;
   
-  const ComingsoonWidget({
+ ComingsoonWidget({
     super.key,
-    required this.movieInfo
+   required this.movieInfo
+  
   });
 
   
@@ -25,16 +24,16 @@ class ComingsoonWidget extends StatelessWidget {
     Size size =MediaQuery.of(context).size;
     return Row(
       children: [
-        const SizedBox(
+       SizedBox(
           height: 500,
           width: 50,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("FEB",style: TextStyle(
+              Text(fetchDate(movieInfo.releaseDate!),style: TextStyle(
                 color: kgreycolor,fontSize: 18),),
-              Text("11",style: TextStyle(
+              Text(fetchDay(movieInfo.releaseDate!),style: TextStyle(
                 fontSize: 40,
                 letterSpacing: 3,
                 
@@ -49,21 +48,23 @@ class ComingsoonWidget extends StatelessWidget {
          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const videoWidget(),
+            const videoWidget(
+              
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("TALL GIRL 2",
-                style: GoogleFonts.kaushanScript(
-                  textStyle: const TextStyle(
-                    letterSpacing: -3,
-                      fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white
-                  ),
+                // Text("TALL GIRL 2",
+                // style: GoogleFonts.kaushanScript(
+                //   textStyle: const TextStyle(
+                //     letterSpacing: -3,
+                //       fontSize: 35,
+                //   fontWeight: FontWeight.bold,
+                //   color: Colors.white
+                //   ),
                  
-                ),
-                ),
+                // ),
+                // ),
                 const Spacer(),
                 const Row(
                   children: [
@@ -81,20 +82,32 @@ class ComingsoonWidget extends StatelessWidget {
               ],
             ),
             kHieght,
-                 const Text("Coming on Friday"),
+                  Text("Coming on Friday${fetchDay(movieInfo.releaseDate!)}"),
                  kHieght,
-                 const Text("Tall Girl 2",
-                 style:TextStyle(
+                  Text(movieInfo.originalTitle??'Empty Title',
+                 style:const TextStyle(
                 color: kwhitecolor,fontSize: 18,
                 fontWeight: FontWeight.bold) ,),
-                const Text("Landing the lead in the school musical is a dream come true for jodi ,until the pressure sends her confidence --and her reletionship-- into a talispan.",
-                style: TextStyle(
+                kHieght,
+                 Text(movieInfo.overview!,
+                style: const TextStyle(
                 color: kgreycolor,fontSize: 15),)
           ],
          ),
         ),
       ],
     );
+  }
+  String fetchDate(String date){
+    DateTime dateInFormat =DateTime.parse(date);
+    final formatDate =(DateFormat.MMMMd().format(dateInFormat)).split("");
+
+    return "${formatDate.first.substring(0,3)} \n${formatDate.last}";
+  }
+  String fetchDay(String date){
+    DateTime dateInFormat =DateTime.parse(date);
+    final dayName =DateFormat("EEEE").format(dateInFormat);
+    return dayName;
   }
 }
 

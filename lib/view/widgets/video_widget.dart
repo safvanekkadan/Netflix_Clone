@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../constants/constants.dart';
-
 class videoWidget extends StatelessWidget {
+  final String? videoImage;
   const videoWidget({
     super.key,
+    this.videoImage
   });
 
   @override
@@ -15,7 +15,7 @@ class videoWidget extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           height: 200,
-          child: Image.network(newhottembimage,
+          child: Image.network('$videoImage',
           fit: BoxFit.cover,),
         ),
         

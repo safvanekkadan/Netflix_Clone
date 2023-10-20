@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prime_video/controller/bottombar_provider.dart';
 import 'package:prime_video/controller/download_trendiinginitial.dart';
+import 'package:prime_video/controller/home_scrollprovider.dart';
+import 'package:prime_video/controller/homescreen_provider.dart';
 import 'package:prime_video/controller/internetconnectivity_provider.dart';
 import 'package:prime_video/controller/newandhot_provider.dart';
 import 'package:prime_video/controller/searchidle_provider.dart';
 import 'package:prime_video/controller/searchquery_provider.dart';
 import 'package:prime_video/controller/searchresult_provider.dart';
+import 'package:prime_video/controller/tvtoprate_provider.dart';
+import 'package:prime_video/controller/videoplayer_provider.dart';
 
 import 'package:prime_video/view/main_page/main_page.dart';
 
@@ -34,8 +39,17 @@ class MyApp extends StatelessWidget {
             create: (context) => InternetConnectivityProvider(),
           ),
           ChangeNotifierProvider(
-            create: (context) => NewandHotProvider(),)
-          
+            create: (context) => NewandHotProvider(),),
+          ChangeNotifierProvider(
+            create:(context) => VideoPlayerProvider(), ),
+          ChangeNotifierProvider(
+            create:(context) =>HomeBackgroundcardImageProvider() ),
+            ChangeNotifierProvider(
+            create:(context) =>HomeScrollProvider() ),
+            ChangeNotifierProvider(
+            create:(context) => TvTopRateProvider()),
+            ChangeNotifierProvider(
+            create:(context) =>SelectedIndexProvider() ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
