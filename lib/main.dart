@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(
             create:(context) => VideoPlayerProvider(), ),
           ChangeNotifierProvider(
-            create:(context) =>HomeBackgroundcardImageProvider() ),
+            create:(context) =>HomeBackgroundCardImageProvider() ),
             ChangeNotifierProvider(
             create:(context) =>HomeScrollProvider() ),
             ChangeNotifierProvider(

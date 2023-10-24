@@ -2,9 +2,11 @@ import 'package:prime_video/model/movie_info_model.dart';
 
 class TmdbApiResponseModel{
   List<MovieInfoModel> results =[];
+
   TmdbApiResponseModel.fromjson(Map data){
     results =(data["results"] as List)
     .map((item) =>MovieInfoModel.fromjson(item))
+    // ignore: unnecessary_null_comparison
     .where((movieInfo) =>movieInfo!=null )
     .toList();
   }

@@ -7,8 +7,8 @@ class searchIdleServices{
   List<MovieInfoModel>trendingMovies =[];
   Future fetchSearchMovies()async{
     try{
-      final  movie= await apiCall(ApiendPoint.trendingMovies);
-      trendingMovies=movie.results;
+      final  movies= await apiCall(ApiendPoint.trendingMovies);
+      trendingMovies=movies.results;
     }catch(error){
       print('Error fetching trending movies:$error');
     }

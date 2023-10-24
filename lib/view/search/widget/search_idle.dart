@@ -39,24 +39,18 @@ class _SearchIdleState extends State<SearchIdle> {
                 if(value.isLoading){
                 return const Center(child: CircularProgressIndicator(),);
               }else if(value.trendingMovies.isEmpty){
-                return const Text("NO data available");
+                return const Text("No data available");
 
               }
               return ListView.separated(
                   shrinkWrap: true,
                   itemBuilder: (ctx, index)=>  TopSearchItemTile(
-                    MovieInfo: value.trendingMovies[index],
-                    
-                  ),
-                  separatorBuilder: (ctx,index)=>const SizedBox(
-                    height: 20,
-                  ),
+                    movieInfo: value.trendingMovies[index]),
+                  separatorBuilder: (ctx,index)=>const SizedBox(height: 20, ),
                   itemCount: value.trendingMovies.length);
                 }
               ),
-  
-              
-            )
+            ),
       ],
     );
   }
@@ -64,14 +58,14 @@ class _SearchIdleState extends State<SearchIdle> {
 
 
 class  TopSearchItemTile extends StatelessWidget {
-  final MovieInfoModel MovieInfo;
+  final MovieInfoModel movieInfo;
   const  TopSearchItemTile({super.key,
-  required this.MovieInfo});
+  required this.movieInfo});
 
   @override
   Widget build(BuildContext context) {
     final screenwidth =MediaQuery.of(context).size.width;
-    String url ="https://image.tmdb.org/t/p/w500${MovieInfo.posterpath}?api_key=1ea527c5454d817bc1ffa3293e9a4cc6";
+    String url ="https://image.tmdb.org/t/p/w500${movieInfo.posterpath}?api_key=1ea527c5454d817bc1ffa3293e9a4cc6";
     return Row(
       children: [
         Container(
@@ -80,10 +74,12 @@ class  TopSearchItemTile extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-            image: NetworkImage(url))
+            image: NetworkImage(url),
+            ),
+             borderRadius: BorderRadius.circular(8),
           ),
         ),
-         Expanded(child: Text(MovieInfo.title??"No Movie Name",style: 
+         Expanded(child: Text(movieInfo.title??"No Movie Name",style: 
         const TextStyle(
           color: Colors.white,
           fontSize: 16,

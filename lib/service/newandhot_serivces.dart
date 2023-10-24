@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:prime_video/model/movie_info_model.dart';
 import 'package:prime_video/service/apiendpoint.dart';
 import 'package:prime_video/service/base_client.dart';
@@ -12,7 +14,7 @@ class NewandHotServices{
       upcomingMovies =movies.results;
 
     }catch(error){
-      print("Error fetching trending movies :$error");
+      log("Error fetching trending movies :$error");
     }
     return upcomingMovies;
   }
@@ -23,7 +25,7 @@ class NewandHotServices{
       moviepopular =movies.results;
 
     }catch(error){
-      print("Error fetching trending Movies: $error");
+      log("Error fetching trending movies:$error");
     }
     return moviepopular;
   }

@@ -17,7 +17,7 @@ class DownloadScreen extends StatelessWidget {
         child: APPBarWidget(title: "Downloads",)),
       body:ListView(
         children: [
-          Row(
+          const Row(
             children: [
               Icon(Icons.settings,
               color: Colors.white,),

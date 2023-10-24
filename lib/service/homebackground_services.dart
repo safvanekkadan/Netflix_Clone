@@ -9,10 +9,10 @@ class HomeBackgroundCardServices{
   setImage()async{
     dynamic result =await apiCall(ApiendPoint.moviepopular);
 
-    if(result.results.isNotEmty){
-    MovieInfoModel MovieInfo =result.results[3];
+    if(result.results.isNotEmpty){
+    MovieInfoModel movieInfo =result.results[0];
 
-    imageUrl ='https://image.tmdb.org/t/p/w500${MovieInfo.posterpath}?api_key=1ea527c5454d817bc1ffa3293e9a4cc6';
+    imageUrl ='https://image.tmdb.org/t/p/w500${movieInfo.posterpath}?api_key=1ea527c5454d817bc1ffa3293e9a4cc6';
     return imageUrl;
     }
   }

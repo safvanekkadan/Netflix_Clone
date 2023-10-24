@@ -10,9 +10,7 @@ class BottomNavigationWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SelectedIndexProvider>(
-      
-      
+    return Consumer<SelectedIndexProvider>(  
       builder:(context, value, child) {
         return BottomNavigationBar(
             currentIndex: value.selectedIndex,

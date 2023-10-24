@@ -5,7 +5,6 @@ import 'package:prime_video/model/movie_info_model.dart';
 import 'package:prime_video/service/api_key.dart';
 import 'package:prime_video/view/search/widget/title.dart';
 import 'package:provider/provider.dart';
- //const imageURl =    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg";
 
 class SearchResultWidget extends StatefulWidget {
 
@@ -21,6 +20,7 @@ class _SearchResultWidgetState extends State<SearchResultWidget> {
     @override
   void initState() {
     super.initState();
+       Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(widget.apiQuery);
       Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
   }
   @override
@@ -31,8 +31,8 @@ class _SearchResultWidgetState extends State<SearchResultWidget> {
         const SearchTextTItle(title: "Movies & TV"),
         const SizedBox(height: 10,),
         Expanded(child: Consumer<SearchResultProvider>(
-          builder: (context, valueprovider, child) {
-        Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(widget.apiQuery);
+          builder: (context, provider, child) {
+        //Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(widget.apiQuery);
           return GridView.count(
             crossAxisCount: 3,
             mainAxisSpacing: 8,
@@ -40,10 +40,10 @@ class _SearchResultWidgetState extends State<SearchResultWidget> {
             childAspectRatio: 1/1.5,
             shrinkWrap: true,
             children: List.generate(
-              valueprovider.searchResultMovies.length, (index) {
-                MovieInfoModel movieInfo = valueprovider.searchResultMovies[index];
+              provider.searchResultMovies.length, (index) {
+                MovieInfoModel movieInfo = provider.searchResultMovies[index];
                 if(movieInfo.posterpath !=null){
-                  String imageUrl ="https://image.tmdb.org/t/p/w500${movieInfo.posterpath}?api_key=$apikey";
+                 String imageUrl ="https://image.tmdb.org/t/p/w500${movieInfo.posterpath}?api_key=$apikey";
                   return   MainCard(
                     imageUrl: imageUrl,
                   );

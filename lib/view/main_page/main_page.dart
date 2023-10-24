@@ -14,7 +14,7 @@ class MainScreen extends StatelessWidget {
   final pages = [
     const HomeScreen(),
     const NewAndHotScreen(),
-      FastLaughsScreen( ),
+      const FastLaughsScreen(),
     const SearchScreen(),
      DownloadScreen()
   ];
@@ -31,7 +31,7 @@ class MainScreen extends StatelessWidget {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavigationWidgets(),
+      bottomNavigationBar: const BottomNavigationWidgets(),
     );
   }
 }

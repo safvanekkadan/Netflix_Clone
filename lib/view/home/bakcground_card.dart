@@ -1,32 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:prime_video/controller/homescreen_provider.dart';
 import 'package:provider/provider.dart';
+import '../../controller/homescreen_provider.dart';
 import 'custom_bottom.dart';
 
-class BAckgroundCard extends StatefulWidget {
-  const BAckgroundCard({super.key});
+class BackgroundCard extends StatefulWidget {
+  const BackgroundCard({super.key});
 
   @override
-  State<BAckgroundCard> createState() => _BAckgroundCardState();
+  State<BackgroundCard> createState() => _BAckgroundCardState();
 }
 
-class _BAckgroundCardState extends State<BAckgroundCard> {
+class _BAckgroundCardState extends State<BackgroundCard> {
 
 
-  //  @override
-  // void initState() {
-  //   super.initState();
-  //   Provider.of<HomeBackgroundCardImageProvider>(context,listen: false).();
-  // }
+   @override
+  void initState() {
+    super.initState();
+    Provider.of<HomeBackgroundCardImageProvider>(context,listen: false)
+    .initializeBackgroundCard();
+  }
   
   @override
   Widget build(BuildContext context) {
-    
-
-    //var imageProvider=Provider.of<HomeBackgroundCardImageProvider>(context,listen: false);
-    return Consumer<HomeBackgroundcardImageProvider>(
-      builder: (context, value, child) {
-         
+    var imageProvider= 
+    Provider.of<HomeBackgroundCardImageProvider>(context,);    
      return Stack(
                 children: [
                   Container(
@@ -34,22 +31,23 @@ class _BAckgroundCardState extends State<BAckgroundCard> {
                   width: double.infinity,
                   decoration:  BoxDecoration(
                     image:DecorationImage(
-                      image:NetworkImage(value.imageUrl??"image not found"),
+                      image:NetworkImage(imageProvider.imageUrl ??"image not found"),
+                      fit: BoxFit.cover
                       ),
                   ),
                   ),
-                  Positioned(
+                  const Positioned(
                      bottom: 0,
                      left: 0,
                      right: 0,         
                     child: Padding(
-                      padding: const EdgeInsets.only(bottom:8.0),
+                      padding: EdgeInsets.only(bottom:8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [ 
                           CustomBotton(icon:Icons.add ,
                           title: "My List"),
-                         _Playbutton(),
+                         PlayButton(),
                          CustomBotton(icon: Icons.info, title:"info")
                          
                         ],
@@ -59,21 +57,6 @@ class _BAckgroundCardState extends State<BAckgroundCard> {
                 ],
               );
       }
-    );
   }
 
-                   TextButton _Playbutton() {
-                return TextButton.icon(onPressed: (){},
-                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.white)
-                   ), icon:const Icon(Icons.play_arrow,
-                   color:  Colors.black,
-                   size: 25,
-                   ), label: Text("Play",
-                   style: TextStyle(fontSize: 20,color: Colors.black),)
-                   );
-                }
-}
 
-mixin HomeBackgroundCardImageProvider {
-}

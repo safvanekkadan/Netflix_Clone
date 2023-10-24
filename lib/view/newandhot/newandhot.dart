@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prime_video/constants/colors.dart';
-
 import '../../constants/constants.dart';
 import 'widgets/comingsoon.dart';
 import 'widgets/everyone_watching.dart';
@@ -26,11 +24,11 @@ class NewAndHotScreen extends StatelessWidget {
           color: Colors.white,
           size: 30,),
           kWidth,
-          Container(
+          SizedBox(
             height: 30,
             width: 40,
-            color: kgreycolor,
-            //Image.network("https://img.freepik.com/premium-psd/3d-cartoon-man-smiling-portrait-isolated-transparent-background-png-psd_888962-1570.jpg"),
+            
+            child :Image.network("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"),
           ),
           kWidth,
           ],
@@ -54,65 +52,7 @@ class NewAndHotScreen extends StatelessWidget {
           )),
         ),
          
-        body:
-//          TabBarView(children: [
-//           _buildComingsoon(),
-//           _buildEveryonewatcing()
-//         ])
-//       ),
-//     );
-//   }
-
-// }
-
-// _buildComingsoon() {
-  
-//      return Consumer<NewandHotProvider>(
-//        builder: (context, comingsoon, child) {
-//          if (comingsoon.isLoading) {
-//           return const Center(child: CircularProgressIndicator(),);
-//         }else if(comingsoon.moviepopular.isEmpty){
-//           return const Text("No data available");
-//         }
-//          return ListView.builder(
-        
-//         itemBuilder:(context, index) =>
-//           ComingsoonWidget(
-//             movieInfo: comingsoon.upcomingMovies[index],
-//           ),
-     
-//        itemCount:comingsoon.upcomingMovies.length,
-//         );
-//        },
-//      );
-
-// }
-
-
-// _buildEveryonewatcing() {
-//   return Consumer<NewandHotProvider>(
-
-//     builder: (context, value, child) {
-//      if (value.isLoading) {
-//           return const Center(child: CircularProgressIndicator(),);
-//         }else if(value.moviepopular.isEmpty){
-//           return const Text("No data available");
-//         }
-//     return ListView.builder(
-//       shrinkWrap: true,
-//       itemBuilder: (context, index) =>  EveryonewatchingWidget(
-//         movieInfo:value.upcomingMovies[index] ,
-//       ),
-//       itemCount: value.moviepopular.length,
-//       );
-//     }
-//   );
-// }
-
-
-
-
-        TabBarView(
+        body:TabBarView(
             children: [_buildComingSoon(context),
              _BuildEveryonesWatching()
              ],
@@ -120,6 +60,7 @@ class NewAndHotScreen extends StatelessWidget {
     );
   }
 }
+
 
 Widget _BuildEveryonesWatching() {
   return const EveryonesWatchingWidget();

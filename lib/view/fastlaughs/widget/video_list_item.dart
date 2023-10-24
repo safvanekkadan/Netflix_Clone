@@ -47,9 +47,6 @@ class _VideoListItemState extends State<VideoListItem> {
             videoUrl: videoUrl,
           
           ),
-          // Container(
-          //   color: Colors.accents[widget.index % Colors.accents.length],
-          // ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,  

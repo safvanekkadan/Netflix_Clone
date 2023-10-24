@@ -30,3 +30,23 @@ final double textSize;
     );
   }
 }
+class PlayButton extends StatelessWidget {
+  const PlayButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton.icon(
+        onPressed: () {},
+        style:ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+        icon: const Icon(Icons.play_arrow,
+        size: 25,
+        color: Colors.black,
+        ),
+        label:const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: Text("Play",style: TextStyle(fontSize: 20,color: Colors.black),),
+        ),);
+  }
+}

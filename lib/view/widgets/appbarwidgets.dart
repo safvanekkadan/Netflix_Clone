@@ -22,7 +22,7 @@ class APPBarWidget extends StatelessWidget {
         Container(
           height: 30,
           width: 40,
-       child: Image.network("https://img.freepik.com/premium-psd/3d-cartoon-man-smiling-portrait-isolated-transparent-background-png-psd_888962-1570.jpg"),
+       child: Image.network("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"),
         ),
         kWidth
       ],

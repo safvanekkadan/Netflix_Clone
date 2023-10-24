@@ -10,7 +10,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SearchQueryModel =Provider.of<SearchQueryProvider>(context);
+    final searchQueryModel =Provider.of<SearchQueryProvider>(context);
     return Scaffold(
          body: SafeArea(
           child: Padding(
@@ -20,7 +20,7 @@ class SearchScreen extends StatelessWidget {
                  children: [
             CupertinoSearchTextField(
               onChanged: (value) {
-                SearchQueryModel.updateQuery(value);
+                searchQueryModel.updateQuery(value);
               },
               backgroundColor:Colors.grey.withOpacity(0.4) ,
               prefixIcon: const Icon(CupertinoIcons.search,
@@ -30,13 +30,14 @@ class SearchScreen extends StatelessWidget {
               style: const TextStyle(
                 color: Colors.white
               ),
+              placeholder: 'Movies, shows and more',
             ),
             const SizedBox(
               height: 10,
             ),
             
-            Expanded(child: SearchQueryModel.query.isEmpty?
-              const SearchIdle():SearchResultWidget(apiQuery: SearchQueryModel.query)),
+            Expanded(child: searchQueryModel.query.isEmpty?
+              const SearchIdle():SearchResultWidget(apiQuery: searchQueryModel.query)),
                  ],
                ),
          ),

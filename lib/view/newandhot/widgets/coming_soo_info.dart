@@ -12,7 +12,7 @@ class ComingSoonInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    String imageUrl =  'https://image.tmdb.org/t/p/w500${movieInfo.posterpath}?api_key=b2dee3b855c4ea705ff5dda3c0201768';
+    String imageUrl =  'https://image.tmdb.org/t/p/w500${movieInfo.posterpath}?api_key=1ea527c5454d817bc1ffa3293e9a4cc6';
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
@@ -22,7 +22,7 @@ class ComingSoonInfoCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(fetchDate(movieInfo.releaseDate!),
+              Text(fetchDate(movieInfo.releaseDate),
                   style: const TextStyle(fontSize: 16, color: kgreycolor)),
             ],
           ),
@@ -34,7 +34,6 @@ class ComingSoonInfoCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               videoWidget(
-                
                 videoImage:imageUrl,
               ),
                const Row(
@@ -61,7 +60,7 @@ class ComingSoonInfoCard extends StatelessWidget {
                 ],
               ),
               kHieght,
-              Text("Coming on ${fetchDay(movieInfo.releaseDate!)}"),
+              Text("Coming on ${fetchDay(movieInfo.releaseDate)}"),
               kHieght,
               Text(
                 movieInfo.originalTitle ?? 'Empty Title',
@@ -71,9 +70,11 @@ class ComingSoonInfoCard extends StatelessWidget {
                 ),
               ),
               kHieght,
-              Text(
-                movieInfo.overview??'Empty overview',
-                style: const TextStyle(color: kgreycolor),
+              Expanded(
+                child: Text(
+                  movieInfo.overview??'Empty overview',
+                  style: const TextStyle(color: kgreycolor),
+                ),
               )
             ],
           ),
@@ -82,16 +83,36 @@ class ComingSoonInfoCard extends StatelessWidget {
     );
   }
 
-  String fetchDate(String date) {
-    DateTime dateInFormat = DateTime.parse(date);
-    final formatDate = (DateFormat.MMMMd().format(dateInFormat)).split(" ");
+  // String fetchDate(String date) {
+  //   DateTime dateInFormat = DateTime.parse(date);
+  //   final formatDate = (DateFormat.MMMMd().format(dateInFormat)).split(" ");
 
-    return "${formatDate.first.substring(0, 3)} \n${formatDate.last}";
-  }
+  //   return "${formatDate.first.substring(0, 3)} \n${formatDate.last}";
+  // }
 
-  String fetchDay(String date) {
-    DateTime dateInFormat = DateTime.parse(date);
-    final dayName = DateFormat('EEEE').format(dateInFormat);
-    return dayName;
+  // String fetchDay(String date) {
+  //   DateTime dateInFormat = DateTime.parse(date);
+  //   final dayName = DateFormat('EEEE').format(dateInFormat);
+  //   return dayName;
+  // }
+  String fetchDate(String? date) {
+  if (date == null) {
+    return 'FEB\n23';
   }
+  
+  DateTime dateInFormat = DateTime.parse(date);
+  final formatDate = (DateFormat.MMMMd().format(dateInFormat)).split(" ");
+
+  return "${formatDate.first.substring(0, 3)} \n${formatDate.last}";
+}
+
+String fetchDay(String? date) {
+  if (date == null) {
+    return 'No release date';
+  }
+  
+  DateTime dateInFormat = DateTime.parse(date);
+  final dayName = DateFormat('EEEE').format(dateInFormat);
+  return dayName;
+}
 }

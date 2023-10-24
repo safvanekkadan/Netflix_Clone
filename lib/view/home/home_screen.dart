@@ -5,13 +5,24 @@ import 'package:prime_video/service/apiendpoint.dart';
 import 'package:prime_video/constants/constants.dart';
 import 'package:prime_video/view/home/bakcground_card.dart';
 import 'package:provider/provider.dart';
+import '../../controller/internetconnectivity_provider.dart';
 import '../widgets/main_card_title.dart';
  
 import 'widgets/number_title_card.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+   @override
+  void initState() {
+    super.initState();
+    Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -31,7 +42,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             ListView(
               children:const   [
-                BAckgroundCard(),
+                BackgroundCard(),
                 
                  MainCardTitle(title: "Release in the past year",
                  apiurl: ApiendPoint.moviepopular),
@@ -69,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                            Container(
                              height: 30,
                              width: 40,
-                             color: Colors.blue,
+                             child: Image.network("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"),
                            ),
                            kWidth
                                        ],
@@ -101,7 +112,6 @@ class HomeScreen extends StatelessWidget {
         ),
     );
   }
-
 }
 
 

@@ -34,7 +34,7 @@ class MainCardTitle extends StatelessWidget {
             );
         }
         if(snapshot.data ==null){
-          return Text('No data found');
+          return const Text('No data found');
         }
         if(snapshot.hasData){
           imageList=snapshot.data.results.map((MovieInfoModel movieInfo){
