@@ -4,7 +4,7 @@ import 'package:prime_video/controller/tvtoprate_provider.dart';
 import 'package:prime_video/model/movie_info_model.dart';
 import 'package:provider/provider.dart';
 
-import '../../constants/constants.dart';
+import '../../../constants/constants.dart';
 import '../../widgets/main_title.dart';
 import 'number_card.dart';
 
@@ -13,6 +13,7 @@ class NUmberTitleCard extends StatelessWidget {
     super.key,
   });
 
+  // @override
   @override
   Widget build(BuildContext context) {
     List imageList= [];

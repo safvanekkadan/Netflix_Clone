@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:prime_video/controller/internetconnectivity_provider.dart';
 import 'package:prime_video/controller/searchidle_provider.dart';
 import 'package:prime_video/model/movie_info_model.dart';
 import 'package:prime_video/view/search/widget/title.dart';
@@ -8,9 +9,20 @@ import 'package:provider/provider.dart';
 //     "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/dXvzWuo3qAxWFQib0IGOPH8hztW.jpg",
 
 //   ];
-class SearchIdle extends StatelessWidget {
+class SearchIdle extends StatefulWidget {
    const SearchIdle({super.key});
- 
+
+  @override
+  State<SearchIdle> createState() => _SearchIdleState();
+}
+
+class _SearchIdleState extends State<SearchIdle> {
+   @override
+  void initState() {
+    super.initState();
+    Provider.of<SearchIdleProvider>(context, listen: false).fetchSearchIdlMovies();
+        Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +83,8 @@ class  TopSearchItemTile extends StatelessWidget {
             image: NetworkImage(url))
           ),
         ),
-        const Expanded(child: Text("Movie Name",style: 
-        TextStyle(
+         Expanded(child: Text(MovieInfo.title??"No Movie Name",style: 
+        const TextStyle(
           color: Colors.white,
           fontSize: 16,
           fontWeight: FontWeight.bold

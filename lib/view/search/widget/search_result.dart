@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prime_video/controller/internetconnectivity_provider.dart';
 import 'package:prime_video/controller/searchresult_provider.dart';
 import 'package:prime_video/model/movie_info_model.dart';
 import 'package:prime_video/service/api_key.dart';
@@ -6,12 +7,22 @@ import 'package:prime_video/view/search/widget/title.dart';
 import 'package:provider/provider.dart';
  //const imageURl =    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg";
 
-class SearchResultWidget extends StatelessWidget {
+class SearchResultWidget extends StatefulWidget {
 
   final String apiQuery;
   const SearchResultWidget({super.key,
   required this.apiQuery});
 
+  @override
+  State<SearchResultWidget> createState() => _SearchResultWidgetState();
+}
+
+class _SearchResultWidgetState extends State<SearchResultWidget> {
+    @override
+  void initState() {
+    super.initState();
+      Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,7 +32,7 @@ class SearchResultWidget extends StatelessWidget {
         const SizedBox(height: 10,),
         Expanded(child: Consumer<SearchResultProvider>(
           builder: (context, valueprovider, child) {
-        Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(apiQuery);
+        Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(widget.apiQuery);
           return GridView.count(
             crossAxisCount: 3,
             mainAxisSpacing: 8,

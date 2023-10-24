@@ -1,5 +1,5 @@
 import 'package:prime_video/service/api_key.dart';
-import 'package:prime_video/view/constants/string.dart';
+import 'package:prime_video/constants/string.dart';
 
 class ApiendPoint{
 

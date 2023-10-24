@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prime_video/controller/download_trendiinginitial.dart';
+import 'package:prime_video/controller/internetconnectivity_provider.dart';
 import 'package:prime_video/view/fastlaughs/widget/fast_laugth_video.dart';
 import 'package:provider/provider.dart';
 
@@ -12,19 +13,27 @@ final dummyVideoUrls = [
   "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4"
 ];
 
-class VideoListItem extends StatelessWidget {
+class VideoListItem extends StatefulWidget {
   final  int index;
     const VideoListItem({
     super.key,
      required this.index });
-  
-  
-  
-
 
   @override
+  State<VideoListItem> createState() => _VideoListItemState();
+}
+
+class _VideoListItemState extends State<VideoListItem> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Provider.of<TrandingMovieInitializeProvider>(context,listen: false).initializeImage();
+    Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
+  }
+  @override
   Widget build(BuildContext context) {
-    final videoUrl=dummyVideoUrls[index % dummyVideoUrls.length];
+    final videoUrl=dummyVideoUrls[widget.index % dummyVideoUrls.length];
     return Consumer<TrandingMovieInitializeProvider>(
       builder: (context, value, child) {
         if(value.isLoading){
@@ -34,13 +43,13 @@ class VideoListItem extends StatelessWidget {
         }
       return Stack(
         children: [
-          FastlaughVideoPlayer(
-            VideoUrl: videoUrl,
+          FastLaughVideoPlayer(
+            videoUrl: videoUrl,
           
           ),
-          Container(
-            color: Colors.accents[index % Colors.accents.length],
-          ),
+          // Container(
+          //   color: Colors.accents[widget.index % Colors.accents.length],
+          // ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,  
@@ -64,7 +73,7 @@ class VideoListItem extends StatelessWidget {
                       radius: 30,
                       backgroundImage: 
                       NetworkImage(
-                        value.imagelist[index],
+                        value.imagelist[widget.index],
                       ),
                     ),
                   ),

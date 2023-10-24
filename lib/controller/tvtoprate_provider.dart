@@ -6,6 +6,10 @@ class TvTopRateProvider extends ChangeNotifier{
 
   List<MovieInfoModel> tvtopRate=[];
   bool isLoading =true;
+
+  TvTopRateProvider(){
+    fetchTVTopRateMovies();
+  }
   
   Future fetchTVTopRateMovies()async{
     tvtopRate =await TvTopRateServices().fetchTVTopRateMovies();

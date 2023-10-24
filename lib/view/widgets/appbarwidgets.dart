@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prime_video/view/constants/constants.dart';
+import 'package:prime_video/constants/constants.dart';
 
 class APPBarWidget extends StatelessWidget {
   const APPBarWidget({
@@ -22,7 +22,7 @@ class APPBarWidget extends StatelessWidget {
         Container(
           height: 30,
           width: 40,
-          color: Colors.blue,
+       child: Image.network("https://img.freepik.com/premium-psd/3d-cartoon-man-smiling-portrait-isolated-transparent-background-png-psd_888962-1570.jpg"),
         ),
         kWidth
       ],

@@ -1,54 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:prime_video/controller/home_scrollprovider.dart';
 import 'package:prime_video/service/apiendpoint.dart';
-import 'package:prime_video/view/constants/constants.dart';
+import 'package:prime_video/constants/constants.dart';
 import 'package:prime_video/view/home/bakcground_card.dart';
+import 'package:provider/provider.dart';
 import '../widgets/main_card_title.dart';
  
 import 'widgets/number_title_card.dart';
-ValueNotifier<bool> ScrollNotifier =ValueNotifier(true);
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body:ValueListenableBuilder(
-        valueListenable: ScrollNotifier,
+      body:Consumer<HomeScrollProvider>(
         builder: (context, value, child) {
           return  NotificationListener<UserScrollNotification>(
         onNotification: (notification){
           final ScrollDirection direction = notification.direction;
           if(direction==ScrollDirection.reverse){
-            ScrollNotifier.value=false;
+            value.setIsScrolling(false);
           }else if(direction ==ScrollDirection.forward){
-            ScrollNotifier.value=true;
+            value.setIsScrolling(true);
           }
           return true;
         },
         child: Stack(
           children: [
             ListView(
-              children:  [
+              children:const   [
                 BAckgroundCard(),
                 
                  MainCardTitle(title: "Release in the past year",
                  apiurl: ApiendPoint.moviepopular),
                 kHieght,
-                const MainCardTitle(title: "Trending Now",
+                MainCardTitle(title: "Trending Now",
                 apiurl: ApiendPoint.trendingMovies),
                 kHieght,
-                 const NUmberTitleCard(),
-                const MainCardTitle(title: "Popular Shows",
+                  NUmberTitleCard(),
+                 MainCardTitle(title: "Popular Shows",
                 apiurl:ApiendPoint.tvpopular ,
                 ),
                 kHieght,
-                const MainCardTitle(title: "Upcoming",
+               MainCardTitle(title: "Upcoming",
                 apiurl: ApiendPoint.upcoming,)
               ],
             ),
-           ScrollNotifier.value==true ? 
-             AnimatedContainer(
+           value.isScrolling==true 
+            ? AnimatedContainer(
               duration: const Duration(milliseconds: 1000),
               width:double.infinity ,
               height: 90,
@@ -93,8 +94,8 @@ class HomeScreen extends StatelessWidget {
               ),
             ):kHieght,
           ],
-        ),
-      );
+          ),
+        );
           
         },
         ),

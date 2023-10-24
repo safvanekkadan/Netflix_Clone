@@ -3,7 +3,7 @@ import 'package:prime_video/model/movie_info_model.dart';
 import 'package:prime_video/service/base_client.dart';
 import 'package:prime_video/view/widgets/main_card.dart';
 
-import '../constants/constants.dart';
+import '../../constants/constants.dart';
 import 'main_title.dart';
 
 class MainCardTitle extends StatelessWidget {

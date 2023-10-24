@@ -1,26 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:prime_video/controller/homescreen_provider.dart';
 import 'package:provider/provider.dart';
-
-import '../constants/constants.dart';
 import 'custom_bottom.dart';
 
-class BAckgroundCard extends StatelessWidget {
+class BAckgroundCard extends StatefulWidget {
   const BAckgroundCard({super.key});
 
   @override
+  State<BAckgroundCard> createState() => _BAckgroundCardState();
+}
+
+class _BAckgroundCardState extends State<BAckgroundCard> {
+
+
+  //  @override
+  // void initState() {
+  //   super.initState();
+  //   Provider.of<HomeBackgroundCardImageProvider>(context,listen: false).();
+  // }
+  
+  @override
   Widget build(BuildContext context) {
+    
+
+    //var imageProvider=Provider.of<HomeBackgroundCardImageProvider>(context,listen: false);
     return Consumer<HomeBackgroundcardImageProvider>(
       builder: (context, value, child) {
-        var imageProvider=Provider.of<HomeBackgroundCardImageProvider>(context); 
+         
      return Stack(
                 children: [
                   Container(
                   height: 600,
                   width: double.infinity,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                     image:DecorationImage(
-                      image:NetworkImage(image) )
+                      image:NetworkImage(value.imageUrl??"image not found"),
+                      ),
                   ),
                   ),
                   Positioned(
@@ -46,7 +61,7 @@ class BAckgroundCard extends StatelessWidget {
       }
     );
   }
-  
+
                    TextButton _Playbutton() {
                 return TextButton.icon(onPressed: (){},
                    style: ButtonStyle(

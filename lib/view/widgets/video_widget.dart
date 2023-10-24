@@ -14,9 +14,9 @@ class videoWidget extends StatelessWidget {
       children: [
         SizedBox(
           width: double.infinity,
-          height: 200,
+          height: 250,
           child: Image.network('$videoImage',
-          fit: BoxFit.cover,),
+          fit: BoxFit.fill,),
         ),
         
         Positioned(
