@@ -22,7 +22,9 @@ class ComingSoonInfoCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(fetchDate(movieInfo.releaseDate),
+              Text(
+                fetchDate(movieInfo.releaseDate)
+                ,
                   style: const TextStyle(fontSize: 16, color: kgreycolor)),
             ],
           ),
@@ -45,16 +47,16 @@ class ComingSoonInfoCard extends StatelessWidget {
                         icon: Icons.add_alert_rounded,
                         title: "Remind me",
                         iconSize: 20,
-                        textSize: 12,
+                        textSize: 12,  
                       ),
-                      kHieght,
+                      kWidth,
                       CustomBotton(
                         icon: Icons.info,
                         title: "Info",
                         iconSize: 20,
                         textSize: 12,
                       ),
-                      kHieght
+                      kWidth20,
                     ],
                   ),
                 ],
@@ -90,25 +92,30 @@ class ComingSoonInfoCard extends StatelessWidget {
   //   return "${formatDate.first.substring(0, 3)} \n${formatDate.last}";
   // }
 
-  // String fetchDay(String date) {
+  // String? fetchDay(String date) {
   //   DateTime dateInFormat = DateTime.parse(date);
   //   final dayName = DateFormat('EEEE').format(dateInFormat);
   //   return dayName;
   // }
   String fetchDate(String? date) {
   if (date == null) {
-    return 'FEB\n23';
+    
+  return 'FEB\n23';
   }
-  
   DateTime dateInFormat = DateTime.parse(date);
   final formatDate = (DateFormat.MMMMd().format(dateInFormat)).split(" ");
 
   return "${formatDate.first.substring(0, 3)} \n${formatDate.last}";
+  
+  
+  
 }
 
 String fetchDay(String? date) {
   if (date == null) {
-    return 'No release date';
+    return "Nov ${1+4}";
+    // ${DateFormat('EEEE').format(DateTime.parse(date!))}
+    
   }
   
   DateTime dateInFormat = DateTime.parse(date);

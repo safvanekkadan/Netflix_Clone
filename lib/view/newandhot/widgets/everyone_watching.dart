@@ -71,7 +71,7 @@ class EveryonesWatchingWidget extends StatefulWidget {
 class _EveryonesWatchingWidgetState extends State<EveryonesWatchingWidget> {
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     Provider.of<NewandHotProvider>(context,listen: false).fetchEveryoneWatchingMovies();
     Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);

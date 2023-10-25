@@ -26,7 +26,7 @@ class VideoListItem extends StatefulWidget {
 class _VideoListItemState extends State<VideoListItem> {
   @override
   void initState() {
-    // TODO: implement initState
+    
     super.initState();
     Provider.of<TrandingMovieInitializeProvider>(context,listen: false).initializeImage();
     Provider.of<InternetConnectivityProvider>(context,listen: false).getInternetConnectivity(context);
@@ -55,7 +55,7 @@ class _VideoListItemState extends State<VideoListItem> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal:10,vertical: 10),
                 child: IconButton(onPressed: (){},
-                 icon:Icon(Icons.volume_off_outlined,
+                 icon:const Icon(Icons.volume_off_outlined,
                  size: 25,)),
               ),
             ///right
@@ -109,7 +109,7 @@ class VideoActionWidget extends StatelessWidget {
         Icon(icon,
         color: Colors.white,
         size: 30,),
-        Text(title,style: TextStyle(
+        Text(title,style: const TextStyle(
           color:Colors.white,
           fontSize: 16
         ),)

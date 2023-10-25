@@ -1,7 +1,4 @@
 import 'dart:async';
-
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import '../service/internetconnectivity.dart';
 
@@ -23,6 +20,7 @@ class InternetConnectivityProvider extends ChangeNotifier{
     subscription=_connectivityServices.subscription;
   }
   
-    notifyListeners();
+    @override
+      notifyListeners();
   
 }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:prime_video/controller/internetconnectivity_provider.dart';
 import 'package:prime_video/controller/newandhot_provider.dart';
 
 import 'package:provider/provider.dart';

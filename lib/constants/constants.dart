@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kWidth =SizedBox(width: 10);
+const kWidth20 =SizedBox(width: 20);
 const kHieght =SizedBox(height: 10);
 const kHieght20= SizedBox(height: 20,);
 const kHieght50= SizedBox(height: 50,);
@@ -14,6 +15,7 @@ BorderRadius kRadius10 =BorderRadius.circular(10);
  //style
 
  
+      // ignore: non_constant_identifier_names
       TextStyle Khometitletext= const  TextStyle(fontSize: 16,fontWeight: FontWeight.bold);
 
       const newhottembimage ="https://www.themoviedb.org/t/p/w533_and_h300_bestv2/aOI3o06xhCgLmA6Bcpm4KRDeMXF.jpg";

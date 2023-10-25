@@ -62,6 +62,7 @@ class NewAndHotScreen extends StatelessWidget {
 }
 
 
+// ignore: non_constant_identifier_names
 Widget _BuildEveryonesWatching() {
   return const EveryonesWatchingWidget();
 }

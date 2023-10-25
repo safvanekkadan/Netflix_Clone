@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:prime_video/controller/internetconnectivity_provider.dart';
 import 'package:prime_video/service/download_service.dart';
-import 'package:prime_video/view/downloads/downloads.dart';
-
 class TrandingMovieInitializeProvider extends ChangeNotifier {
 List imagelist =[];
 bool isLoading =true;
@@ -13,7 +11,7 @@ TrandingMovieInitializeProvider(){
 }
 
 void initializeImage()async{
-  imagelist =await DownloadServices().getTrendingMovies();
+  imagelist =await DownloadsServices().getTrendingMovies();
   isLoading=false;
   notifyListeners();
 }

@@ -6,7 +6,7 @@ import 'package:prime_video/view/widgets/appbarwidgets.dart';
 import 'package:provider/provider.dart';
 
 class DownloadScreen extends StatelessWidget {
-  DownloadScreen({Key?key}):super(key: key);
+  const DownloadScreen({Key?key}):super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +16,8 @@ class DownloadScreen extends StatelessWidget {
         preferredSize:Size.fromHeight(50),
         child: APPBarWidget(title: "Downloads",)),
       body:ListView(
-        children: [
-          const Row(
+        children: const [
+          Row(
             children: [
               Icon(Icons.settings,
               color: Colors.white,),
@@ -27,7 +27,7 @@ class DownloadScreen extends StatelessWidget {
             
           ),
           Section2(),
-          const Section3(),
+          Section3(),
         ],
       )
     );
@@ -36,7 +36,7 @@ class DownloadScreen extends StatelessWidget {
 class Section2 extends StatelessWidget {
 
   
-   Section2({super.key});
+   const Section2({super.key});
   
   @override
   Widget build(BuildContext context) {
@@ -141,7 +141,7 @@ class Section3 extends StatelessWidget {
             ),
             ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
             SizedBox(
@@ -150,7 +150,7 @@ class Section3 extends StatelessWidget {
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
-                side: BorderSide(color: Colors.black38)
+                side: const BorderSide(color: Colors.black38)
               ),
                       
                       child: const Padding(

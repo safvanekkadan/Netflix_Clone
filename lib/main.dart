@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => TrandingMovieInitializeProvider(),),
         ChangeNotifierProvider(
-            create:(context) => SearchIdleProvider(), ),
+            create:(context) => SearchIDLProvider(), ),
         ChangeNotifierProvider(
           create: (context) => SearchResultProvider(),),
         ChangeNotifierProvider(

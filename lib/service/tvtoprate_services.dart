@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:prime_video/service/apiendpoint.dart';
 import 'package:prime_video/service/base_client.dart';
 
@@ -11,7 +13,7 @@ class TvTopRateServices{
       tvtoprate = movies.results;
     } catch (error) {
       // Handle the error here
-      print('Error fetching trending movies: $error');
+      log('Error fetching trending movies: $error');
     }
     return tvtoprate;
   }

@@ -16,6 +16,7 @@ class InternetConnectivityServices{
     isDeviceConnected =await InternetConnectionChecker().hasConnection;
 
     if(!isDeviceConnected&&isAlertSet ==false){
+      // ignore: use_build_context_synchronously
       showDialogBox(context);
       isAlertSet =true;
     }
@@ -38,6 +39,7 @@ class InternetConnectivityServices{
                 isDeviceConnected =
                     await InternetConnectionChecker().hasConnection;
                 if (!isDeviceConnected) {
+                  // ignore: use_build_context_synchronously
                   showDialogBox(context);
                 
                     isAlertSet = true;

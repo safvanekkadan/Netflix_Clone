@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
+// ignore: camel_case_types
 class videoWidget extends StatelessWidget {
   final String? videoImage;
   const videoWidget({

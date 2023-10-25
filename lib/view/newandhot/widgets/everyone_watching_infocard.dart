@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:prime_video/constants/colors.dart';
 import 'package:prime_video/constants/constants.dart';
 import 'package:prime_video/view/widgets/video_widget.dart';
@@ -35,7 +34,7 @@ class EveryonesWatchingInfoCard extends StatelessWidget {
                   kHieght50,
                   videoWidget(videoImage: imageUrl),
                   kHieght,
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                         CustomBotton(

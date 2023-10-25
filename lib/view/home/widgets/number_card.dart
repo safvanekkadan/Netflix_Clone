@@ -42,7 +42,7 @@ class NumberCard extends StatelessWidget {
             strokeCap: StrokeCap.butt,
             strokeWidth: 4,
             child: Text("${index+1}",style: GoogleFonts.bebasNeue(
-               textStyle :TextStyle(
+               textStyle :const TextStyle(
               fontSize: 150,
               fontWeight: FontWeight.bold,
               decoration: TextDecoration.none,

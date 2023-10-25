@@ -72,12 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
                        Image.network("https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/227_Netflix_logo-512.png",
                    width:70,
                    height: 50,),
-                   Spacer(),
+                   const Spacer(),
                     const Icon(Icons.cast,
                            color: Colors.white,
                            size: 30,),
                            const SizedBox(width: 10),
-                           Container(
+                           SizedBox(
                              height: 30,
                              width: 40,
                              child: Image.network("https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"),

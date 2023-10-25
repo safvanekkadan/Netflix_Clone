@@ -7,6 +7,7 @@ class VideoPlayerProvider extends ChangeNotifier{
 
  
   videoPlayerState(String videoUrl){
+    // ignore: non_constant_identifier_names
     late var VideoUrlvar =Uri.parse(videoUrl);
     videoPlayerController =VideoPlayerController.networkUrl(VideoUrlvar)
     ..initialize().then((_){
