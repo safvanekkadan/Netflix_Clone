@@ -4,7 +4,7 @@ import 'package:prime_video/constants/string.dart';
 class ApiendPoint{
 
   static const trendingMovies ="$kbaseurl/trending/all/day?api_key=$apikey";
-  static const searchmovie ='$kbaseurl/serach/movie/?api_key=$apikey&query=';
+  static const searchmovie ='$kbaseurl/search/movie?api_key=$apikey&query=';
   static const upcoming ='$kbaseurl/movie/upcoming?api_key=$apikey&language=en-US&page=1';
   static const moviepopular ='$kbaseurl/movie/popular?api_key=$apikey&language=en-US&page=1';
   static const tvpopular ='$kbaseurl/tv/popular?api_key=$apikey&language=en-US&page=1';

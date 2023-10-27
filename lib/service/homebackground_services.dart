@@ -10,7 +10,7 @@ class HomeBackgroundCardServices{
     dynamic result =await apiCall(ApiendPoint.moviepopular);
 
     if(result.results.isNotEmpty){
-    MovieInfoModel movieInfo =result.results[0];
+    MovieInfoModel movieInfo =result.results[9];
 
     imageUrl ='https://image.tmdb.org/t/p/w500${movieInfo.posterpath}?api_key=1ea527c5454d817bc1ffa3293e9a4cc6';
     return imageUrl;

@@ -21,7 +21,7 @@ class MovieInfoModel{
    MovieInfoModel.fromjson(Map data){
     posterpath=data['poster_path'];
     title=data['title'];
-    releaseDate=data['releaseDate'];
+    releaseDate=data['release_date'];
     originalTitle=data['original_title'];
     overview=data['overview'];
    }

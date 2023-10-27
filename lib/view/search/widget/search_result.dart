@@ -103,7 +103,7 @@ class _SearchResultWidgetState extends State<SearchResultWidget> {
         Expanded(child: Consumer<SearchResultProvider>(
           
           builder: (context, provider, child) {
-             Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(widget.apiQuery);
+             Provider.of<SearchResultProvider>(context,listen: false).fetchSearchResult(context, widget.apiQuery);
             return  GridView.count(
               shrinkWrap: true,
               crossAxisCount: 3,

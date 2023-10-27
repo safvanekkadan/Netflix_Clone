@@ -1,9 +1,13 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:prime_video/model/movie_info_model.dart';
 import 'package:prime_video/model/tmdb_api_response.dart';
 import 'package:prime_video/service/apiendpoint.dart';
 class FetchMovieServices{
+     BuildContext context;
+
+  FetchMovieServices({required this.context});
 
   Future<List<String>> getTrendingMoviesImages() async {
    try {
@@ -26,7 +30,13 @@ class FetchMovieServices{
     }
      
    } catch (e) {
-    return [];
+    ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('An error occurred: $e'),
+        ),
+      );
+   return [];
+   
      
    }
   } 

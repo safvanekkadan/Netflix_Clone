@@ -13,7 +13,8 @@ class SearchIDLServices {
       trendingMovies = movies.results;
     } catch (error) {
       // Handle the error here
-      log('Error fetching trending movies: $error');
+     log('Error fetching trending movies: $error');
+     
     }
     return trendingMovies;
   }

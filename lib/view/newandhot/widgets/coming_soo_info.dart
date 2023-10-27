@@ -87,20 +87,24 @@ class ComingSoonInfoCard extends StatelessWidget {
 
   // String fetchDate(String date) {
   //   DateTime dateInFormat = DateTime.parse(date);
-  //   final formatDate = (DateFormat.MMMMd().format(dateInFormat)).split(" ");
+  //   final formatDate = (DateFormat.MMMd().format(dateInFormat)).split(" ");
 
   //   return "${formatDate.first.substring(0, 3)} \n${formatDate.last}";
-  // }
-
-  // String? fetchDay(String date) {
-  //   DateTime dateInFormat = DateTime.parse(date);
-  //   final dayName = DateFormat('EEEE').format(dateInFormat);
-  //   return dayName;
-  // }
+//   // }
+// String fetchDate(String date) {
+//   DateTime dateInFormat = DateTime.parse(date);
+//   final formatDate = DateFormat.MMMd().format(dateInFormat);
+//   return formatDate;
+// }
+//   String? fetchDay(String date) {
+//     DateTime dateInFormat = DateTime.parse(date);
+//     final dayName = DateFormat('EEEE').format(dateInFormat);
+//     return dayName;
+//   }
   String fetchDate(String? date) {
   if (date == null) {
     
-  return 'FEB\n23';
+  return movieInfo.releaseDate??'Feb';
   }
   DateTime dateInFormat = DateTime.parse(date);
   final formatDate = (DateFormat.MMMMd().format(dateInFormat)).split(" ");
@@ -113,7 +117,7 @@ class ComingSoonInfoCard extends StatelessWidget {
 
 String fetchDay(String? date) {
   if (date == null) {
-    return "Nov ${1+4}";
+    return movieInfo.releaseDate!;
     // ${DateFormat('EEEE').format(DateTime.parse(date!))}
     
   }

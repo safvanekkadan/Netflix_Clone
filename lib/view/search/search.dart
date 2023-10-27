@@ -6,42 +6,6 @@ import 'package:prime_video/view/search/widget/search_idle.dart';
 import 'package:prime_video/view/search/widget/search_result.dart';
 import 'package:provider/provider.dart';
 
-// class SearchScreen extends StatelessWidget {
-//   const SearchScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final searchQueryModel =Provider.of<SearchQueryProvider>(context);
-//     return Scaffold(
-//          body: SafeArea(
-//           child: Padding(
-//            padding: const EdgeInsets.all(10.0),
-//            child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//                  children: [
-//             CupertinoSearchTextField(
-//               onChanged: (value) {
-//                 searchQueryModel.updateQuery(value);
-//               },
-//               backgroundColor:Colors.grey.withOpacity(0.4) ,
-//               prefixIcon: const Icon(CupertinoIcons.search,color: Colors.grey,),
-//               suffixIcon: const Icon(CupertinoIcons.xmark_circle_fill,color: Colors.grey,),
-//               style: const TextStyle(color: Colors.white),
-//               placeholder: 'Movies, shows and more',
-//              ),
-//              const SizedBox(
-//               height: 10,
-//             ),
-            
-//             Expanded(child: searchQueryModel.query.isEmpty?
-//               const SearchIdle():SearchResultWidget(apiQuery: searchQueryModel.query)),
-//                  ],
-//                ),
-//             ),
-//          ),
-//      );
-//   }
-// }
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
 
